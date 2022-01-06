@@ -1,0 +1,5 @@
+name: AntiDuplication
+version: ${project.version}
+main: com.yiorno.antiduplication.AntiDuplication
+api-version: 1.18
+authors: [ yossy_zip ]
