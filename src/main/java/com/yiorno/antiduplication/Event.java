@@ -45,6 +45,16 @@ public class Event implements Listener {
                         return;
                     }
 
+                    //チェストの名前変更禁止
+                    //Vehiclesコピー対策
+                    if ((displayName != latestItem.get(p).getItemMeta().getDisplayName()) &&
+                            !(latestItem.get(p).getType() == Material.CHEST)){
+
+                        p.sendMessage(ChatColor.YELLOW + "このアイテムは名前の変更ができません！");
+                        e.setCancelled(true);
+                        return;
+                    }
+
                     //MOFU書き換えキャンセル
                     if ((displayName.contains(" " + ChatColor.AQUA + "MOFU")) &&
                             (latestItem.get(p).containsEnchantment(Enchantment.DURABILITY))){
