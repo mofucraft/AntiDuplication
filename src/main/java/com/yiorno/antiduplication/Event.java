@@ -2,6 +2,7 @@ package com.yiorno.antiduplication;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.Tag;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -37,19 +38,26 @@ public class Event implements Listener {
                     //元アイテムと違う名前になっている
                     //元アイテムにエンチャントがついている
                     //キャンセル
+                    if(latestItem.get(p).getItemMeta() == null) {
+                        return;
+                    }
+
                     if ((displayName != latestItem.get(p).getItemMeta().getDisplayName()) &&
                             !(latestItem.get(p).getEnchantments().isEmpty())){
 
+                        //p.sendMessage("" + e.getCurrentItem().getType().name());
                         p.sendMessage(ChatColor.YELLOW + "このアイテムは名前の変更ができません！");
                         e.setCancelled(true);
                         return;
                     }
 
+
                     //チェストの名前変更禁止
                     //Vehiclesコピー対策
-                    if ((displayName != latestItem.get(p).getItemMeta().getDisplayName()) &&
-                            !(latestItem.get(p).getType() == Material.CHEST)){
+                    if (e.getCurrentItem().getType().name().toLowerCase().contains("chest") &&
+                    !e.getCurrentItem().getType().name().toLowerCase().contains("trap")){
 
+                        //p.sendMessage("" + e.getCurrentItem().getType().name());
                         p.sendMessage(ChatColor.YELLOW + "このアイテムは名前の変更ができません！");
                         e.setCancelled(true);
                         return;
@@ -70,6 +78,8 @@ public class Event implements Listener {
                     } else {
                         latestItem.put(p, e.getCurrentItem());
                     }
+
+                    //p.sendMessage("" + e.getCurrentItem().getType().name());
 
                 }
 
