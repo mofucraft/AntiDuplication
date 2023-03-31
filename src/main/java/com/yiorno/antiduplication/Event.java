@@ -54,8 +54,9 @@ public class Event implements Listener {
 
                     //チェストの名前変更禁止
                     //Vehiclesコピー対策
-                    if (e.getCurrentItem().getType().name().toLowerCase().contains("chest") &&
-                    !e.getCurrentItem().getType().name().toLowerCase().contains("trap")){
+                    //if (e.getCurrentItem().getType().name().toLowerCase().contains("chest") &&
+                    //!e.getCurrentItem().getType().name().toLowerCase().contains("trap")){
+                    if (e.getCurrentItem().getType().name().equals("CHEST")) {
 
                         //p.sendMessage("" + e.getCurrentItem().getType().name());
                         p.sendMessage(ChatColor.YELLOW + "このアイテムは名前の変更ができません！");
