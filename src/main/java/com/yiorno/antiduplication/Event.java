@@ -30,6 +30,10 @@ public class Event implements Listener {
         if (e.getCurrentItem().getType() != Material.AIR) {
 
             //clicked
+            if(e.getCurrentItem().getItemMeta() == null) {
+                return;
+            }
+
             String displayName = e.getCurrentItem().getItemMeta().getDisplayName();
 
             if (e.getInventory().getType() == InventoryType.ANVIL) {
