@@ -2,7 +2,6 @@ package com.yiorno.antiduplication;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.Tag;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -70,6 +69,10 @@ public class Event implements Listener {
                         return;
                     }*/
 
+                    if (!latestItem.containsKey(p)) {
+                        return;
+                    }
+
                     if ((displayName != latestItem.get(p).getItemMeta().getDisplayName()) &&
                             !(latestItem.get(p).getEnchantments().isEmpty())){
 
@@ -78,6 +81,7 @@ public class Event implements Listener {
                         e.setCancelled(true);
                         return;
                     }
+
 
                     //MOFU書き換えキャンセル
                     if ((displayName.contains(" " + ChatColor.AQUA + "MOFU")) &&
