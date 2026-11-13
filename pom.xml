@@ -6,7 +6,7 @@
 
     <groupId>com.yiorno</groupId>
     <artifactId>AntiDuplication</artifactId>
-    <version>1.2</version>
+    <version>1.2.1</version>
     <packaging>jar</packaging>
 
     <name>AntiDuplication</name>

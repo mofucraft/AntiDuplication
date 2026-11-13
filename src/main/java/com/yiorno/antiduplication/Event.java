@@ -73,6 +73,11 @@ public class Event implements Listener {
                         return;
                     }
 
+                    //元アイテムが動かされて空気になっているとメタが null
+                    if (latestItem.get(p).getItemMeta() == null) {
+                        return;
+                    }
+
                     if ((displayName != latestItem.get(p).getItemMeta().getDisplayName()) &&
                             !(latestItem.get(p).getEnchantments().isEmpty())){
 
